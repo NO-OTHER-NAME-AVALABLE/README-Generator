@@ -1,57 +1,38 @@
-const fs = require('fs');
-const licenseOBJ = [{
-  title: "MIT",
-  value: `MIT License
+# README Generator
+  
+  ![License](https://img.shields.io/badge/license-GPL-yellow)
 
-  Copyright (c) [year] [fullname]
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-  
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.`
-},{
-  title: "BSD 2-Clause License",
-  value: `BSD 2-Clause License
+  [Description](#Description) [Usage](#Usage) [Tests](#Tests) [License](#License) 
+ 
+ 
+  ## Description
 
-  Copyright (c) [year], [fullname]
-  
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
-  
-  1. Redistributions of source code must retain the above copyright notice, this
-     list of conditions and the following disclaimer.
-  
-  2. Redistributions in binary form must reproduce the above copyright notice,
-     this list of conditions and the following disclaimer in the documentation
-     and/or other materials provided with the distribution.
-  
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`
-},
-{
-  title: "GPL",
-  value: `                    GNU GENERAL PUBLIC LICENSE
+  this is a NODE program that uses user input to generate a README
+
+
+
+  ## Usage
+
+  to use this program, find the program directory and input node index. from there just fill out the prompted questions
+
+
+
+  ## Tests
+  to test this program, locate the program in the terminal and input node text/sample
+
+
+
+  ## Questions
+
+  Micahstew@gmail.com
+  NO-OTHER-NAME-AVALABLE
+
+
+
+  ## License
+
+  https://www.gnu.org/licenses/gpl-3.0.en.html
+                      GNU GENERAL PUBLIC LICENSE
   Version 2, June 1991
 
 Copyright (C) 1989, 1991 Free Software Foundation, Inc.,
@@ -389,113 +370,4 @@ This General Public License does not permit incorporating your program into
 proprietary programs.  If your program is a subroutine library, you may
 consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
-Public License instead of this License.`
-}];// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-var licenseText = '';
-var licenseBadge = '';  
-var licenseLink = '';
-function renderLicenseBadge(license) {
-  
-  if (license == ''){
-    return;
-  } else {
-    licenseBadge = `![License](https://img.shields.io/badge/license-${license}-yellow)`
-  }
-}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-
-  if (license == ``){
-
-  }else if (license == 'MIT'){
-    licenseLink = `https://opensource.org/licenses/MIT`;
-  }else if ( license == 'GPL'){
-    licenseLink = `https://www.gnu.org/licenses/gpl-3.0.en.html`;
-  }else if (license == 'BSD 2-Clause License'){
-    licenseLink = `https://opensource.org/licenses/BSD-3-Clause`;
-  }
-}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
-  
-  if (license == ''){
-    return;
-  }else if (license == 'MIT'){
-    licenseText = licenseOBJ[0].value 
-  }else if (license == 'GPL'){
-    licenseText = licenseOBJ[2].value
-  }else if (license == 'BSD 2-Clause License'){
-    licenseText = licenseOBJ[1].value
-  }
-}
-
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  console.log(data);
-  renderLicenseBadge(data.license);
-  renderLicenseLink(data.license);
-  renderLicenseSection(data.license);
-  return `# ${data.title}
-  
-  ${licenseBadge}
-
-  [Description](#Description)   [Installation](#Installation) [Usage](#Usage) [Contributing](#Contributing) [Tests](#Tests) [License](#License) 
- 
- 
-  ## Description
-
-  ${data.description}
-
-
-
-  ## Installation
-
-  ${data.installationInstructions}
-
-
-
-  ## Usage
-
-  ${data.usageInformation}
-
-
-
-  ## Contributing
-
-  ${data.contributionGuidelines}
-
-
-
-  ## Tests
-  ${data.testInstructions}
-
-
-
-  ## Questions
-
-  ${data.Email}
-  ${data.GitHubUsername}
-
-
-
-  ## License
-
-  ${licenseLink}
-  ${licenseText}
-`;
-
-}
-
-function writeToFile(fileName, data) {
-  fs.appendFile(fileName, data, function (err) {
-    if (err) throw err;
-    console.log('Saved!');
-  })
-}
-
-module.exports = {generateMarkdown, writeToFile};
+Public License instead of this License.
